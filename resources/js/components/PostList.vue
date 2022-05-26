@@ -5,7 +5,6 @@
         <h1>Latest Post</h1>
       </div>
     </div>
-
     <div class="row">
       <div class="col-9">
         <Post v-for="(post, index) in posts" :key="index" :post="post" />
@@ -16,6 +15,29 @@
         </div>
       </div>
     </div>
+    <nav class="d-flex justify-content-center p-4">
+      <ul class="pagination">
+        <li
+          class="page-item"
+          v-if="pagination.currentPage > 1"
+          @click="getPosts(pagination.currentPage - 1)"
+        >
+          <a class="page-link">Previous</a>
+        </li>
+
+        <li class="page-item">
+          <a class="page-link">{{ pagination.currentPage }}</a>
+        </li>
+
+        <li
+          class="page-item"
+          v-if="pagination.currentPage < pagination.lastPage"
+          @click="getPosts(pagination.currentPage + 1)"
+        >
+          <a class="page-link">Next</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -29,15 +51,18 @@ export default {
   data: function () {
     return {
       posts: [],
+      pagination: {},
     };
   },
   methods: {
-    getPosts() {
+    getPosts(page) {
       axios
-        .get("http://localhost:8000/api/posts")
+        .get(`http://localhost:8000/api/posts?page=${page}`)
         .then((response) => {
           this.posts = response.data.results.data;
-          console.log(this.posts);
+          const { current_page, last_page } = response.data.results;
+          this.pagination = { currentPage: current_page, lastPage: last_page };
+          console.log(this.pagination);
         })
         .catch((error) => {
           console.log(error);
@@ -45,7 +70,7 @@ export default {
     },
   },
   created() {
-    this.getPosts();
+    this.getPosts(1);
   },
 };
 </script>

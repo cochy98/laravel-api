@@ -1978,6 +1978,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PostList",
@@ -1986,23 +2008,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      pagination: {}
     };
   },
   methods: {
-    getPosts: function getPosts() {
+    getPosts: function getPosts(page) {
       var _this = this;
 
-      axios.get("http://localhost:8000/api/posts").then(function (response) {
+      axios.get("http://localhost:8000/api/posts?page=".concat(page)).then(function (response) {
         _this.posts = response.data.results.data;
-        console.log(_this.posts);
+        var _response$data$result = response.data.results,
+            current_page = _response$data$result.current_page,
+            last_page = _response$data$result.last_page;
+        _this.pagination = {
+          currentPage: current_page,
+          lastPage: last_page
+        };
+        console.log(_this.pagination);
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
   created: function created() {
-    this.getPosts();
+    this.getPosts(1);
   }
 });
 
@@ -2595,6 +2625,46 @@ var render = function () {
       ),
       _vm._v(" "),
       _vm._m(1),
+    ]),
+    _vm._v(" "),
+    _c("nav", { staticClass: "d-flex justify-content-center p-4" }, [
+      _c("ul", { staticClass: "pagination" }, [
+        _vm.pagination.currentPage > 1
+          ? _c(
+              "li",
+              {
+                staticClass: "page-item",
+                on: {
+                  click: function ($event) {
+                    return _vm.getPosts(_vm.pagination.currentPage - 1)
+                  },
+                },
+              },
+              [_c("a", { staticClass: "page-link" }, [_vm._v("Previous")])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("li", { staticClass: "page-item" }, [
+          _c("a", { staticClass: "page-link" }, [
+            _vm._v(_vm._s(_vm.pagination.currentPage)),
+          ]),
+        ]),
+        _vm._v(" "),
+        _vm.pagination.currentPage < _vm.pagination.lastPage
+          ? _c(
+              "li",
+              {
+                staticClass: "page-item",
+                on: {
+                  click: function ($event) {
+                    return _vm.getPosts(_vm.pagination.currentPage + 1)
+                  },
+                },
+              },
+              [_c("a", { staticClass: "page-link" }, [_vm._v("Next")])]
+            )
+          : _vm._e(),
+      ]),
     ]),
   ])
 }
