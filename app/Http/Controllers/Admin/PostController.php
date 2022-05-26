@@ -18,9 +18,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //$posts = Post::all();
+        //$posts = Post::all(); -> restituisce tutti i post
+        //$posts = Post::orderBy('id', 'DESC')->paginate(5); -> restituisce tutti i post, paginati 5 per volta
         $categories = Category::all();
-        $posts = Post::orderBy('id', 'DESC')->paginate(5);
+
+        // ? Restituisce tutti i post dell'utente attualmente loggato, ordinati e paginati a gruppi di 5
+        $posts = Post::where('author', Auth::user()->name)->orderBy('id', 'DESC')->paginate(5);
         return view('admin.index', compact('posts', 'categories'));
     }
 
