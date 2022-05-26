@@ -9,22 +9,7 @@
 
 // & Regole di stile della guest home
 div.guest-home {
-  position: relative;
-  height: calc(100vh - 71px);
-
-  div.message {
-    width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-
-    a.btn {
-      color: white;
-      margin-top: 2rem;
-    }
-  }
+  text-align: center;
 }
 
 // § Regole di stile per l'header
