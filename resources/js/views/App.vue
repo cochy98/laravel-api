@@ -1,12 +1,13 @@
 <template>
-  <div class="guest-home">
-    <h1>Benvenuti in vue</h1>
-  </div>
+  <PostList />
 </template>
 
 <script>
-export default {};
+import PostList from "../components/PostList";
+export default {
+  name: "App",
+  components: {
+    PostList,
+  },
+};
 </script>
-
-<style>
-</style>

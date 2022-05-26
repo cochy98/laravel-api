@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="admin-page container-fluid p-5">
+<div class="post-list container-fluid p-5">
   <div class="row">
     <div class="col-12">
-      <h1>{{ ucfirst(Auth::user()->name) }}, questi sono i post suggeriti per te!</h1>
+      <h1>I post di {{ ucfirst(Auth::user()->name) }}</h1>
     </div>
   </div>
 

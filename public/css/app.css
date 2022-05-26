@@ -12178,10 +12178,6 @@ fieldset:disabled .btn {
   }
 }
 
-div.guest-home {
-  text-align: center;
-}
-
 header {
   background-color: #c49b70;
 }
@@ -12210,7 +12206,7 @@ header nav ul li {
   font-size: 1.1rem;
 }
 
-div.admin-page div.my-card {
+div.post-list div.my-card {
   border: 1px solid #aeadad;
   border-radius: 0.3rem;
   padding: 1.5rem;
@@ -12218,31 +12214,31 @@ div.admin-page div.my-card {
   margin-bottom: 1.3rem;
 }
 
-div.admin-page div.my-card img.my-card-img {
+div.post-list div.my-card img.my-card-img {
   width: 350px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-right: 1.5rem;
 }
 
-div.admin-page div.my-card div.my-card-content {
+div.post-list div.my-card div.my-card-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-div.admin-page div.my-card div.my-card-content div.my-card-body div.my-card-header h2.title,
-div.admin-page div.my-card div.my-card-content div.my-card-body div.my-card-header .title.h2 {
+div.post-list div.my-card div.my-card-content div.my-card-body div.my-card-header h2.title,
+div.post-list div.my-card div.my-card-content div.my-card-body div.my-card-header .title.h2 {
   margin: 0;
 }
 
-div.admin-page div.my-card div.my-card-content div.my-card-body div.my-card-header h5.author,
-div.admin-page div.my-card div.my-card-content div.my-card-body div.my-card-header .author.h5 {
+div.post-list div.my-card div.my-card-content div.my-card-body div.my-card-header h5.author,
+div.post-list div.my-card div.my-card-content div.my-card-body div.my-card-header .author.h5 {
   font-style: italic;
   margin-bottom: 1rem;
 }
 
-div.admin-page div.my-card div.my-card-content div.my-card-body div.my-card-text {
+div.post-list div.my-card div.my-card-content div.my-card-body div.my-card-text {
   height: 75px;
   overflow-y: hidden;
   text-align: justify;
