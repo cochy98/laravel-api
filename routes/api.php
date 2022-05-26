@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // ? Rotta per accedere all'Api di tutti i post
 Route::get('/posts', 'Api\PostController@index');
+Route::get('/posts/{id}', 'Api\PostController@show');
