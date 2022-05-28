@@ -12,6 +12,19 @@
     <div class="col-9">
         @foreach ($posts as $post)
         <div class="my-card d-flex">
+          <div class="action-wrapper">
+            <a  href="{{ route('admin.posts.edit', $post->id) }}" 
+                class="btn btn-success btn-sm">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+            <form action="{{ route('admin.posts.destroy', $post->id) }}" 
+              method="POST" 
+              class="delete-card">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+            </form>
+          </div>
           <img src="{{ $post->image_url }}" alt="Picture of {{ $post->title }}" class="my-card-img">
           <div class="my-card-content">
             <div class="my-card-body">

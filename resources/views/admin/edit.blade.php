@@ -1,22 +1,23 @@
 @extends('layouts.app')
-@section('title', 'Create')
+@section('title', 'Edit')
 @section('content')
     <div class="container">
-        <h1 class="text-center py-5">Scrivi Post</h1>
+        <h1 class="text-center py-5">Modifica Post</h1>
         <div class="wrapper-form">
-            <form action="{{ route('admin.posts.store') }}" method="POST">
+            <form action="{{ route('admin.posts.update', $post) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
                     <label for="title">Titolo</label>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="Inserisci un titolo per il tuo post">
+                    <input type="text" name="title" id="title" class="form-control" value="{{ $post->title }}">
                 </div>
                 <div class="mb-3">
                     <label for="content">Contenuto</label>
-                    <textarea class="form-control" id="content" name="content" rows="3" placeholder="Descrivi il tuo post..." ></textarea>
+                    <textarea class="form-control" id="content" name="content" rows="3">{{ $post->content }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="image_url">Immagine post</label>
-                    <input type="text" name="image_url" id="image_url" class="form-control" placeholder="Immagine URL del post">
+                    <input type="text" name="image_url" id="image_url" class="form-control" value="{{ $post->image_url }}">
                 </div>
                 <div class="mb-3">
                     <label for="category_id">Categoria</label>
